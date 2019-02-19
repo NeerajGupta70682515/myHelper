@@ -1,0 +1,83 @@
+<?php $this->load->view('includes/header'); ?>
+<!-- page content -->
+
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="<?php echo base_url();?>adminzone">Home</a>
+                </li>
+
+            
+                <li class="active"><?php echo $heading_title; ?></li>
+            </ul>
+        </div>
+		        
+
+		<div class="page-header">
+            <h1>
+                &nbsp;&nbsp;&nbsp;<?php echo anchor('adminzone/staticpages','Back to List'); ?>
+                <small>
+                    <i class="ace-icon fa fa-angle-double-right"></i>
+                    <?php echo $heading_title; ?>
+                </small>
+            </h1>
+        </div>
+       </div>        
+       
+       
+    <div class="row">
+      <div class="col-md-10 col-sm-10 col-xs-10">
+        <div class="x_panel">
+          <?php validation_message();?>
+          <?php error_message(); ?>
+          <div class="x_content"> <br />
+            <?php echo form_open_multipart(current_url_query_string(), 'class="form-horizontal form-label-left" id="form"');?>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Page Name <span class="required">*</span> </label>
+                
+              <div class="col-md-6 col-sm-6 col-xs-12">
+              <input name="page_name" type="text"  class="form-control col-md-7 col-xs-12" value="<?php echo $pageresult['page_name'];?>">
+              </div>
+            </div>
+			
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Friendly url :<span class="required">*</span> </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" name="friendly_url" id="friendly_url" size="40" class="form-control col-md-7 col-xs-12" value="<?php echo $pageresult['friendly_url'];?>">
+              </div>
+            </div>
+			
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Description: <span class="required">*</span> </label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <textarea   name="page_description" rows="5" cols="50" class="form-control" id="page_desc" ><?php echo $pageresult['page_description'];?></textarea>
+                <?php
+ 			    echo display_ckeditor($ckeditor); ?>
+              </div>
+            </div>
+			
+            <div class="form-group">
+              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Add Page Image :<span class="required">*</span></label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="file" name="page_image" size="80" class="form-control col-md-7 col-xs-12">
+              </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <input type="submit"  class="btn btn-success" value="Update" />
+                <input type="hidden" name="id" value="<?php echo $pageresult['page_id'];?>" />
+              </div>
+            </div>
+            <?php echo form_close(); ?> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /page content -->
+<?php $this->load->view('includes/footer'); ?>
